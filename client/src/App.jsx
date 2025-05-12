@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "./components/Navbar";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
@@ -12,11 +11,13 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import AddAddress from "./pages/AddAddress";
 import MyOrders from "./pages/MyOrders";
-import SellerLogin from "./components/Seller/SellerLogin";
+import SellerLogin from "./components/seller/SellerLogin";
 import SellerLayout from "./pages/seller/SellerLayout";
 import AddProduct from "./pages/seller/AddProduct";
 import ProductList from "./pages/seller/ProductList";
 import Orders from "./pages/seller/Orders";
+import Loading from "./components/Loading";
+import Contact from "./pages/Contact";
 
 const App = () => {
   const isSellerPath = useLocation().pathname.includes("seller");
@@ -35,9 +36,12 @@ const App = () => {
           <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:category" element={<ProductCategory />} />
           <Route path="/products/:category/:id" element={<ProductDetails />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/addaddress" element={<AddAddress />} />
           <Route path="/myorders" element={<MyOrders />} />
+          <Route path="/loader" element={<Loading />} />
+
           <Route
             path="/seller"
             element={isSeller ? <SellerLayout /> : <SellerLogin />}
